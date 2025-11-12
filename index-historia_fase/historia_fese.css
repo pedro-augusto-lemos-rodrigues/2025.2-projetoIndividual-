@@ -6,10 +6,14 @@ body {
     background-color: #000000;
     color: white;
 
-    background-image: url(../imagens/fundoLateral.png);
+    /* background-image: url(../imagens/fundo1.png);
     background-size: 120px auto;
     background-repeat: no-repeat, no-repeat; /*isso impede com que a imagem fique se repetindo de uma ponta a outra do site */
-    background-position: left center, right center;
+
+    /* background-image: url(../imagens/fundo1.png);
+    align-items: center;  */
+
+
 }
 
 
@@ -36,9 +40,9 @@ body {
 
 /*início do CSS da navbar*/ 
 .Navbar {
-    width: 100%;
+    width: 90%;
     background-color: black;
-    border: 2px solid orange;
+    border: 2px solid white;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -47,7 +51,7 @@ body {
 
 .logoSite {
     width: 60px;
-    height: 40px;
+    height: 60px;
     background-color: white;
     border-radius: 50%;
     background-image: url('logo.png'); /* opcional */
@@ -60,17 +64,13 @@ body {
     font-weight: bold;
     border: 2px solid #F5FF0C;
     border-radius: 5px;
-    margin: 0 5px;
+    margin:  5px;
     padding: 5px 10px;
     cursor: pointer;
 }
 
-.botoes1 .inicio .txt{
-    color: #F5FF0C;
-}
-
 .botoes1 .quiz {
-    background-color: rgb(23, 0, 128);
+    background-color: rgb(0, 0, 0);
     color: black;
     font-weight: bold;
     border: 2px solid orange;
@@ -82,8 +82,8 @@ body {
 
 
 .loginCadastro label {
-    background-color: orange;
-    border: 2px solid black;
+    background-color: black;
+    border: 2px solid orange;
     margin-left: 10px;
     padding: 4px 8px;
     border-radius: 5px;
@@ -129,7 +129,7 @@ body {
 }
 
 .caixaDeBotão label {
-    background-color: #111;
+    background-color: #000000;
     color: white;
     border: 1px solid orange;
     border-radius: 5px;
@@ -199,8 +199,14 @@ body {
     margin-bottom: 10px;
 }
 
-.historia .imagem,
-.historia .texto {
+.imagemLore{
+   margin: 5px auto;
+    width: 250px;
+    height: 250px;
+    
+}
+
+.historia.historia .texto {
     background-color: gold;
     margin: 5px auto;
     width: 90%;
