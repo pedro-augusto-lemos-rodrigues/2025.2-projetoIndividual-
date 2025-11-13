@@ -206,6 +206,13 @@ body {
     
 }
 
+.imagemLoreSEMTEXTO{
+   margin: 5px auto;
+    width: 350px;
+    height: 250px;
+    
+}
+
 .historia.historia .texto {
     background-color: gold;
     margin: 5px auto;
@@ -240,14 +247,31 @@ body {
     padding-bottom: 10px;
 }
 
-.fases .imagem,
+.imagemFase{
+   margin: 5px auto;
+    width: 250px;
+    height: 250px;
+    
+}
+
+
+.imagemFaseLarga{
+   margin: 5px auto;
+    width: 280px;
+    height: 250px;
+    
+}
+
 .fases .texto {
-    background-color: gold;
+    background-color: rgb(0, 0, 0);
     margin: 5px auto;
     width: 90%;
     height: 60px;
     border-radius: 5px;
+    border: 2px solid white;
 }
+
+
 /*início do CSS das fases do jogo*/
 
 
@@ -263,7 +287,7 @@ body {
 
 /*início do CSS do footer*/
 .footer {
-    width: 100%;
+
     background-color: black;
     text-align: center;
     padding: 10px;
