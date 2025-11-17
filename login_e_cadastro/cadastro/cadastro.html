@@ -1,66 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="cadastro.css">
 </head>
 <body>
-    <div class="divPaginaToda">
 
-        <div class="Navbar">
-            <div class="logoSite"></div>
+<div class="pagina">
 
-            <div class="botoes1">
-                <label>Início</label>
-                <label>Quiz</label>
-            </div>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logoSite">logo</div>
 
-            <div class="loginCadastro">
-                <label>Login</label>
-
-                <label>Cadastro</label>
-            </div>
-
+        <div class="botoesNav">
+            <button>INÍCIO</button>
+            <button>QUIZ</button>
         </div>
 
+        <div class="loginCadastro">
+            <button class="loginBtn">Login</button>
+            <button class="cadastrarBtn">Cadastrar</button>
+        </div>
+    </div>
 
-        <div class="cinzaEscuro">
 
-            <div class="logo">
 
-            </div>
+    <div class="conteudo">
 
-            <div class="cardPreto">
+        <div class="logoMeio">logo</div>
 
+        <div class="cardCadastro">
+
+            <div class="lado-esq">
                 <label>E-mail</label>
-                <input class="LoginEmail" type="text" id="ipt_email" placeholder="E-mail">
+                <input type="text" placeholder="Seu e-mail">
 
                 <label>Senha</label>
-                <input class="LoginSenha" type="text" id="ipt_senha" placeholder="****************">
-
-                <button onclick="start()">START</button>
-
-                <label>Não possui conta? <a href="">Cadastre-se</a></label>
-            
+                <input type="password" placeholder="••••••••••">
             </div>
 
+            <div class="lado-dir">
+                <label>Nome de usuário</label>
+                <input type="text" placeholder="Seu nome">
+
+                <label>Confirmar Senha</label>
+                <input type="password" placeholder="••••••••••">
+            </div>
+
+            <div class="centro">
+                <button class="startBtn">START</button>
+                <p class="loginTxt">Já possui conta? <a href="../login/login.html">Faça Login</a></p>
+            </div>
 
         </div>
-
-
-        <div class="footer">
-            
-            rodapé da página
-        
-        </div>
-    
-
-
-
-
-
-
     </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        rodapé da página
+    </div>
+
+</div>
+
+
+
+
 </body>
 </html>

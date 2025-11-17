@@ -1,0 +1,169 @@
+/* ======== CONFIGURAÇÕES GERAIS ======== */
+
+body {
+    margin: 0;
+    background-color: black;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.pagina {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ======== NAVBAR ======== */
+
+.navbar {
+    width: 100%;
+    height: 70px;
+    background-color: #1a1a1a;
+    border-bottom: 3px solid #ffa200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logoSite {
+    background: white;
+    color: black;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.botoesNav button {
+    background: black;
+    border: 2px solid orange;
+    padding: 10px 20px;
+    margin: 0 10px;
+    color: orange;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.loginCadastro button {
+    border: 2px solid orange;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.loginBtn {
+    background: black;
+    color: orange;
+}
+
+.cadastrarBtn {
+    background: yellow;
+    color: black;
+    border-color: yellow;
+}
+
+/* ======== CORAÇÕES LATERAIS ======== */
+
+.coracoes-esq,
+.coracoes-dir {
+    position: fixed;
+    top: 80px;
+    width: 40px;
+    height: 80%;
+    background-image: url("https://i.imgur.com/JYD8p5b.png"); /* coloque aqui a imagem dos corações */
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
+.coracoes-esq {
+    left: 0;
+}
+
+.coracoes-dir {
+    right: 0;
+}
+
+/* ======== CONTEÚDO CENTRAL ======== */
+
+.conteudo {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logoMeio {
+    width: 100px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* ======== CARD DE CADASTRO ======== */
+
+.cardCadastro {
+    background: #2f2f38;
+    width: 60%;
+    padding: 40px;
+    border: 4px solid white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.cardCadastro label {
+    margin-top: 10px;
+}
+
+.cardCadastro input {
+    width: 250px;
+    padding: 10px;
+    border: 2px solid orange;
+    background-color: black;
+    color: orange;
+    margin-bottom: 20px;
+}
+
+.lado-esq, .lado-dir {
+    display: flex;
+    flex-direction: column;
+}
+
+.centro {
+    width: 100%;
+    text-align: center;
+}
+
+.startBtn {
+    background: black;
+    border: 2px solid orange;
+    padding: 10px 30px;
+    color: orange;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.loginTxt {
+    margin-top: 10px;
+}
+
+.loginTxt a {
+    color: red;
+}
+
+/* ======== FOOTER ======== */
+
+.footer {
+    width: 100%;
+    background: #111;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+    border-top: 3px solid orange;
+}

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+
+<body>
+
+<!-- navbar -->
+<div class="navbar">
+    <div class="logoSite">logo</div>
+
+    <div class="botoesNav">
+        <button class="botaoNAVBAR">Início</button>
+        <button class="botaoNAVBAR">Quiz</button>
+    </div>
+
+    <div class="loginCadastro">
+        <button class="login">Login</button>
+        <button class="cadastrar">Cadastrar</button>
+    </div>
+</div>
+
+
+<!-- personagens -->
+<img src="../imagens/toriel_cor.png" class="mettaton">
+<img src="../imagens/toriel_cor.png"class="alphys">
+
+<!-- início do quiz -->
+<div class="containerQuiz">
+
+
+
+    <!-- div que mostr as perguntas -->
+    <div class="caixaPergunta">
+        <span id="spanQuestaoExibida">PERGUNTA 1 - 10</span>
+    </div>
+
+
+
+    <!-- respostas e opções do quiz -->
+    <div class="areaRespostas">
+
+        <div class="linha">
+            <span class="textoResp">RESPOSTA a</span>
+            <div class="letra letraA">A</div>
+
+            <div class="letra letraC">C</div>
+            <span class="textoResp">RESPOSTA c</span>
+        </div>
+
+        <div class="linha">
+            <span class="textoResp">RESPOSTA b</span>
+            <div class="letra letraB">B</div>
+
+            <div class="letra letraD">D</div>
+            <span class="textoResp">RESPOSTA d</span>
+        </div>
+
+        <div class="coraCentral">
+            <img src="../imagens/determinacao.png" >
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Botões NEXT e SELECT -->
+    <div class="botoesNavegacao">
+        <button class="botaoSelecionar">SELECT</button>
+        <button class="botaoNEXT">NEXT »</button>
+    </div>
+
+
+
+</div>
+
+</body>
+</html>
+
+<script>
+    const listaDeQuestoes = [
+
+        {
+            pergunta: "O que signifiva a alma de cor verde?",
+            alternativaA: "Determinação",
+            alternativaB: "Bondade",
+            alternativaC: "Bravura",
+            alternativaD: "Integridade",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Quanto chefes tem no jogo, contando os chefes secretos, mini Boss, etc?",
+            alternativaA: "15 a 20",
+            alternativaB: "20 a 40",
+            alternativaC: "10",
+            alternativaD: "3 a 12",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Quantas letraz a no nome Mettatonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn?",
+            alternativaA: "108",
+            alternativaB: "40",
+            alternativaC: "100",
+            alternativaD: "78",
+            alternativaCorreta: "alternativaA"
+        },
+
+        
+        {
+            pergunta: "Você beijaria um fantasma? ",
+            alternativaA: "E claro",
+            alternativaB: "E claro",
+            alternativaC: "E claro",
+            alternativaD: "E claro",
+            alternativaCorreta: "alternativaD"
+        },
+
+
+        {
+            pergunta: " Um caminhão percorre 200 km em 5 horas. A velocidade média é dada pela razão entre a distância percorrida e o tempo. Neste caso, a velocidade média é de:  ",
+            alternativaA: "40 km/h",
+            alternativaB: "50 km/h",
+            alternativaC: "55 km/h",
+            alternativaD: "60 km/h",
+            alternativaCorreta: "alternativaA"
+        },
+
+
+
+    ]
+
+    // variáveis globais    
+    let numeroDaQuestaoAtual = 0
+    let quantidadeDeQuestoes = listaDeQuestoes.length
+    // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
+
+    function onloadEsconder() {
+        document.getElementById('pontuacao').style.display = "none"
+        document.getElementById('jogo').style.display = "none"
+    }
+
+    function iniciarQuiz() {
+        document.getElementById('pontuacao').style.display = "flex"
+        document.getElementById('jogo').style.display = "flex"
+        document.getElementById('btnIniciarQuiz').style.display = "none"
+
+        document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
+
+        preencherHTMLcomQuestaoAtual(0)
+
+        botaoSelecionar.disabled = false
+        botaoNEXT.disabled = true
+    }
+
+    function preencherHTMLcomQuestaoAtual(index) {
+        habilitarAlternativas(true)
+        const questaoAtual = listaDeQuestoes[index]
+        numeroDaQuestaoAtual = index
+        console.log("questaoAtual")
+        console.log(questaoAtual)
+        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
+        document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
+        document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
+        document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
+        document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
+        document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
+    }
+
+    function submeter() {
+        const options = document.getElementsByName("option"); // recupera alternativas no html
+
+        let hasChecked = false
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+                hasChecked = true
+                break
+            }
+        }
+
+        if (!hasChecked) {
+            alert("Não há alternativas escolhidas. Escolha uma opção.")
+        } else {
+            btnSubmeter.disabled = true
+            btnProx.disabled = false
+
+            habilitarAlternativas(false)
+
+            checarResposta()
+        }
+    }
+
+    function habilitarAlternativas(trueOrFalse) {
+        let opcaoEscolhida = trueOrFalse ? false : true
+
+        primeiraOpcao.disabled = opcaoEscolhida
+        segundaOpcao.disabled = opcaoEscolhida
+        terceiraOpcao.disabled = opcaoEscolhida
+        quartaOpcao.disabled = opcaoEscolhida
+
+    }
+
+    function avancar() {
+        btnProx.disabled = true
+        btnSubmeter.disabled = false
+
+        desmarcarRadioButtons()
+
+        if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
+            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+        } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
+            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+        } else {
+            finalizarJogo()
+        }
+        limparCoresBackgroundOpcoes()
+    }
+
+
+    function checarResposta() {
+        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual 
+        const respostaQuestaoAtual = questaoAtual.alternativaCorreta // qual é a resposta correta da questão atual
+
+        const options = document.getElementsByName("option"); // recupera alternativas no html
+
+        let alternativaCorreta = null // variável para armazenar a alternativa correta
+
+        options.forEach((option) => {
+            if (option.value === respostaQuestaoAtual) {
+                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
+                alternativaCorreta = option.labels[0].id
+            }
+        })
+
+        // verifica se resposta assinalada é correta
+        options.forEach((option) => {
+            if (option.checked === true && option.value === respostaQuestaoAtual) {
+                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+                pontuacaoFinal++
+                certas++
+                document.getElementById("spanCertas").innerHTML = certas
+                numeroDaQuestaoAtual++
+            } else if (option.checked && option.value !== respostaQuestaoAtual) {
+                const wrongLabelId = option.labels[0].id
+
+                document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
+                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+                tentativaIncorreta++
+                erradas++
+                document.getElementById("spanErradas").innerHTML = erradas
+                numeroDaQuestaoAtual++
+            }
+        })
+    }
+
+    function limparCoresBackgroundOpcoes() {
+        const options = document.getElementsByName("option");
+        options.forEach((option) => {
+            document.getElementById(option.labels[0].id).classList.remove("text-danger-with-bg")
+            document.getElementById(option.labels[0].id).classList.remove("text-success-with-bg")
+        })
+    }
+
+    function desmarcarRadioButtons() {
+        const options = document.getElementsByName("option");
+        for (let i = 0; i < options.length; i++) {
+            options[i].checked = false;
+        }
+    }
+
+    function finalizarJogo() {
+        let textoParaMensagemFinal = null
+        let classComCoresParaMensagemFinal = null
+        const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
+
+        if (porcentagemFinalDeAcertos <= 0.3) {
+            textoParaMensagemFinal = "Parece que você não estudou..."
+            classComCoresParaMensagemFinal = "text-danger-with-bg"
+        }
+        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
+            textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
+            classComCoresParaMensagemFinal = "text-warning-with-bg"
+        }
+        else if (porcentagemFinalDeAcertos >= 0.9) {
+            textoParaMensagemFinal = "Uau, parabéns!"
+            classComCoresParaMensagemFinal = "text-success-with-bg"
+        }
+
+        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos)*100) + "% das questões."
+
+
+        document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
+        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal) 
+        document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
+
+        document.getElementById('jogo').classList.add("text-new-gray") 
+
+        btnProx.disabled = true
+        btnSubmeter.disabled = true
+        // btnConcluir.disabled = true
+        btnTentarNovamente.disabled = false
+
+    }
+</script>
