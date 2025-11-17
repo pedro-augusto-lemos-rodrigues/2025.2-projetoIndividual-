@@ -1,0 +1,249 @@
+/*início do CSS da configuração geral da página*/
+
+
+body {
+    margin: 0;
+    background-color: #000000;
+    color: white;
+
+    /* background-image: url(../imagens/fundo1.png);
+    background-size: 120px auto;
+    background-repeat: no-repeat, no-repeat; /*isso impede com que a imagem fique se repetindo de uma ponta a outra do site */
+
+    /* background-image: url(../imagens/fundo1.png);
+    align-items: center;  */
+
+
+}
+
+
+
+
+.divPaginaToda {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+/*fim do CSS da configuração geral da página*/
+
+
+
+
+
+
+
+
+
+
+
+/*início do CSS da navbar*/ 
+.Navbar {
+    width: 90%;
+    background-color: black;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 15px;
+}
+
+.logoSite {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    background-image: url('logo.png'); /* opcional */
+    background-size: cover;
+}
+
+.botoes1 .inicio {
+    background-color: #000000;
+    color: black;
+    font-weight: bold;
+    border: 2px solid #F5FF0C;
+    border-radius: 5px;
+    margin:  5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.botoes1 .quiz {
+    background-color: rgb(0, 0, 0);
+    color: black;
+    font-weight: bold;
+    border: 2px solid orange;
+    border-radius: 5px;
+    margin: 0 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+.loginCadastro label {
+    background-color: black;
+    border: 2px solid orange;
+    margin-left: 10px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/*fim do CSS da navbar*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*início do CSS da primara parte do site*/
+
+.cardCinzaFundo1 {
+    width: 90%;
+    background-color: #38363C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+
+
+.caixaDeBotão {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: #000000;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.caixaDeBotão label {
+    background-color: #000000;
+    color: white;
+    border: 1px solid orange;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 3px;
+    cursor: pointer;
+}
+/*fim do CSS da primara parte do site*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*início do CSS "O que é Undertale"*/
+.cinzaFundo2 {
+    width: 90%;
+    background-color: #222;
+    margin-top: 15px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.cinzaClaro {
+    background-color: #888;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+
+.cinzaClaro .titulo h3 {
+    background-color: #ccc;
+    color: black;
+    margin: 0;
+    border-radius: 5px;
+    padding: 5px;
+}
+/*fim do CSS "O que é Undertale"*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*início do CSS das fases do jogo*/
+.alma {
+    width: 90%;
+    background-color: #222;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.alma .cinzaClaro {
+    background-color: #aaa;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.imagemAlma{
+   margin: 5px auto;
+    width: 250px;
+    height: 250px;
+    
+}
+
+
+
+.alma .texto {
+    background-color: rgb(0, 0, 0);
+    margin: 5px auto;
+    width: 90%;
+    height: 60px;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+
+/*início do CSS das fases do jogo*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*início do CSS do footer*/
+.footer {
+
+    background-color: black;
+    text-align: center;
+    padding: 10px;
+    color: orange;
+    border-top: 2px solid orange;
+    margin-top: 20px;
+}
+/*fim do CSS do footer*/
