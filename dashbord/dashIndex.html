@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dash de Acertos</title>
+    <link rel="stylesheet" href="dash_css.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">logo</div>
+
+        <nav class="menu">
+            <a href="index.html" class="botao-menu">INÍCIO</a>
+            <a href="cadastro.html" class="botao-menu quiz">QUIZ</a>
+        </nav>
+
+        <div class="loginCadastro">
+            <a href="login.html" class="botao-loginCadastro">Login</a>
+            <a href="cadastro.html" class="botao-loginCadastro">Cadastrar</a>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO CENTRAL -->
+    <main class="main-content">
+
+        
+
+
+
+
+        
+
+        <div class="buttons-exitReset">
+            <button class="botao-action">EXIT</button>
+            <button class="botao-action">RESET</button>
+        </div>
+
+        <div class="footer-msg">
+            ${nomeUsuario} Stay determined...
+        </div>
+    </main>
+
+</body>
+</html>
+
+<script>
+    const config = {
+  type: 'doughnut',
+  data: data,
+  options: {
+    plugins: {
+      customCanvasBackgroundColor: {
+        color: 'lightGreen',
+      }
+    }
+  },
+  plugins: [plugin],
+};
+
+const data = {
+  labels: [
+    'Red',
+    'Blue',
+    'Yellow'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+
+
+
+const plugin = {
+  id: 'customCanvasBackgroundColor',
+  beforeDraw: (chart, args, options) => {
+    const {ctx} = chart;
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = options.color || '#99ffff';
+    ctx.fillRect(0, 0, chart.width, chart.height);
+    ctx.restore();
+  }
+};
+</script>

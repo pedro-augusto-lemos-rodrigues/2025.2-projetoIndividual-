@@ -1,169 +1,192 @@
-/* ======== CONFIGURAÇÕES GERAIS ======== */
+
+
+
+
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
 
 body {
-    margin: 0;
-    background-color: black;
-    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
     color: white;
 }
 
-.pagina {
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-}
 
-/* ======== NAVBAR ======== */
+
+
+
+
+
+
+/*  NAVBAR  */
 
 .navbar {
     width: 100%;
-    height: 70px;
-    background-color: #1a1a1a;
-    border-bottom: 3px solid #ffa200;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logoSite {
-    background: white;
-    color: black;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 50px;
-}
-
-.botoesNav button {
-    background: black;
-    border: 2px solid orange;
-    padding: 10px 20px;
-    margin: 0 10px;
-    color: orange;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.loginCadastro button {
-    border: 2px solid orange;
-    padding: 10px 20px;
-    margin-left: 10px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.loginBtn {
-    background: black;
-    color: orange;
-}
-
-.cadastrarBtn {
-    background: yellow;
-    color: black;
-    border-color: yellow;
-}
-
-/* ======== CORAÇÕES LATERAIS ======== */
-
-.coracoes-esq,
-.coracoes-dir {
-    position: fixed;
-    top: 80px;
-    width: 40px;
-    height: 80%;
-    background-image: url("https://i.imgur.com/JYD8p5b.png"); /* coloque aqui a imagem dos corações */
-    background-repeat: repeat-y;
-    background-size: cover;
-}
-
-.coracoes-esq {
-    left: 0;
-}
-
-.coracoes-dir {
-    right: 0;
-}
-
-/* ======== CONTEÚDO CENTRAL ======== */
-
-.conteudo {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.logoMeio {
-    width: 100px;
-    height: 50px;
-    border-radius: 50%;
-    background: white;
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-/* ======== CARD DE CADASTRO ======== */
-
-.cardCadastro {
-    background: #2f2f38;
-    width: 60%;
-    padding: 40px;
-    border: 4px solid white;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.cardCadastro label {
-    margin-top: 10px;
-}
-
-.cardCadastro input {
-    width: 250px;
-    padding: 10px;
-    border: 2px solid orange;
     background-color: black;
-    color: orange;
-    margin-bottom: 20px;
+    border: 2px solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
 }
 
-.lado-esq, .lado-dir {
+.logo {
+    width: 70px;
+    height: 70px;
+    background: white;
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-nav {
+    background: none;
+    border: 2px solid orange;
+    color: orange;
+    padding: 6px 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.nav-right {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-login {
+    border: 2px solid orange;
+    color: orange;
+    background: none;
+    padding: 8px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.btn-cadastrar {
+    border: 2px solid yellow;
+    color: yellow;
+    background: none;
+    padding: 8px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+/*  CONTEÚDO CENTRAL  */
+
+.container {
+    background-color: #3d3c41;
+    margin: 20px auto;
+    width: 90%;
+    padding-bottom: 60px;
+    border: 5px solid black;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.centro {
-    width: 100%;
-    text-align: center;
+.logo-central {
+    width: 130px;
+    height: 90px;
+    background: white;
+    color: black;
+    margin-top: 25px;
+    border-radius: 50%;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.startBtn {
+
+
+
+
+
+
+
+/*  FORMULÁRIO DE CADASTRO  */
+
+.caixa-cadastro {
     background: black;
+    border: 4px solid white;
+    width: 70%;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.linha {
+    display: flex;
+    justify-content: space-between;
+}
+
+.campo {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-size: 20px;
+}
+
+input {
+    background: none;
     border: 2px solid orange;
-    padding: 10px 30px;
-    color: orange;
-    font-weight: bold;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+}
+
+.coracao {
+    width: 40px;
+    display: block;
+    margin: 5px auto -10px auto;
+}
+
+.btn-start {
+    width: 120px;
+    padding: 8px;
+    font-size: 20px;
+    background: none;
+    border: 2px solid orange;
+    color: white;
+    margin: 10px auto;
     cursor: pointer;
-    margin-top: 10px;
 }
 
-.loginTxt {
-    margin-top: 10px;
-}
-
-.loginTxt a {
-    color: red;
-}
-
-/* ======== FOOTER ======== */
-
-.footer {
-    width: 100%;
-    background: #111;
-    padding: 20px;
+.registro {
     text-align: center;
-    margin-top: 50px;
-    border-top: 3px solid orange;
+    margin-top: -10px;
+}
+
+.registro a {
+    color: red;
+    text-decoration: none;
 }
