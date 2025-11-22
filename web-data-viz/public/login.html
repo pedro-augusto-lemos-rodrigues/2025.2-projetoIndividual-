@@ -9,24 +9,25 @@
 <body>
 
     <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="logo">logo</div>
+     <div class="Navbar">
+        <div class="logoSite"></div>
 
-        <nav>
-            <button class="btn-nav">
-                 INÍCIO
-            </button>
+            <div class="botoes1">
+                <label class="inicio" style="color: #F5FF0C;" style="text-decoration: none;">Início</label>
+                <label class="quiz" style="color: orange;" style="text-decoration: none;">Quiz</label>
+            </div>
 
-            <button class="btn-nav">
-                 QUIZ
-            </button>
-        </nav>
+            <div class="loginCadastro">
+                <label style="color: orange;">
+                    <a href="login.html" style="text-decoration: none;">Login</a>
+                </label>
 
-        <div class="nav-right">
-            <button class="btn-login">Login</button>
-            <button class="btn-cadastrar">Cadastrar</button>
+                <label style="color: orange;">
+                    <a href="cadastro.html" style="text-decoration: none;">Cadastro</a>
+                </label>
+            </div>
+
         </div>
-    </header>
 
     <main class="container">
 
@@ -41,7 +42,7 @@
                 <input type="password" id="ipt_senha">
 
 
-                <button class="btn-start">START</button>
+                <button type="button" class="btn-start" onclick="entrar()">START</button>
 
                 <p class="registro">
                     Não possui conta? <a href="cadastro.html">Cadastre-se</a>

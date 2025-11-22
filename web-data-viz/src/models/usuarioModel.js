@@ -18,6 +18,7 @@ function cadastrar(email, senha, nome) {
 	    ('${email}', '${senha}', '${nome}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
+
     return database.executar(instrucaoSql);
 }
 

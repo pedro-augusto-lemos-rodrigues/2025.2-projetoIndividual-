@@ -1,76 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="css/cadastro.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="css/cadastro.css">
 </head>
+
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="logo">logo</div>
+  <!-- NAVBAR -->
+  <div class="Navbar">
+    <!-- <div class="logoSite"></div> -->
 
-        <nav>
-            <button class="btn-nav">🔊 INÍCIO</button>
-            <button class="btn-nav">🔊 QUIZ</button>
-        </nav>
+    <div class="botoes1">
+      <a href="index.html" style="text-decoration: none;">
+        <label class="inicio" style="color: #F5FF0C;">Início</label>
+      </a>
 
-        <div class="nav-right">
-            <button class="btn-login">Login</button>
-            <button class="btn-cadastrar">Cadastrar</button>
-        </div>
-    </header>
+      <a href="quiz.html" style="text-decoration: none;">
+        <label class="quiz" style="color: orange;">Quiz</label>
+      </a>
 
-    <!-- CONTEÚDO -->
-    <main class="container">
 
-        <div class="logo-central">logo</div>
+    </div>
 
-        <div class="caixa-cadastro">
+    <div class="loginCadastro">
+      <label style="color: orange;">
+        <a href="login.html" style="text-decoration: none;">Login</a>
+      </label>
 
-            <form>
+      <label style="color: orange;">
+        <a href="cadastro.html" style="text-decoration: none;">Cadastro</a>
+      </label>
+    </div>
 
-                <div class="linha">
-                    <div class="campo">
-                        <label>E-mail</label>
-                        <input type="text" id="ipt_email">
-                    </div>
+  </div>
+  <!-- CONTEÚDO -->
+  <main class="container">
 
-                    <div class="campo">
-                        <label>Nome de usuário</label>
-                        <input type="text" id="ipt_nomeUser">
-                    </div>
-                </div>
+    <!-- <div class="logo-central">logo</div> -->
 
-                <div class="linha">
-                    <div class="campo">
-                        <label>Senha</label>
-                        <input type="password" id="ipt_senha">
-                    </div>
+    <div class="caixa-cadastro">
 
-                    <div class="campo">
-                        <label>Confirmar Senha</label>
-                        <input type="password" id="ipt_senhaCerta">
-                    </div>
-                </div>
+  
 
-                <img src="imagens/determinacao.png" class="coracao">
+        <div class="linha">
+          <div class="campo">
+            <label>E-mail</label>
+            <input type="text" id="ipt_email">
+          </div>
 
-                <button class="btn-start" onclick="cadastrar()">START</button>
-
-                <p class="registro">
-                    Já possui conta? <a href="login.html">Faça Login</a>
-                </p>
-
-            </form>
-
+          <div class="campo">
+            <label>Nome de usuário</label>
+            <input type="text" id="ipt_nomeUser">
+          </div>
         </div>
 
-    </main>
+        <div class="linha">
+          <div class="campo">
+            <label>Senha</label>
+            <input type="password" id="ipt_senha">
+          </div>
+
+          <div class="campo">
+            <label>Confirmar Senha</label>
+            <input type="password" id="ipt_senhaCerta">
+          </div>
+        </div>
+
+        <img src="imagens/determinacao.png" class="coracao">
+
+        <button  class="btn-start" onclick="cadastrar()">START</button>
+
+        <p class="registro">
+          Já possui conta? <a href="login.html">Faça Login</a>
+        </p>
+
+
+    </div>
+
+  </main>
 
 </body>
+
 </html>
 
 
@@ -94,24 +108,16 @@
 
     var idCadastroLogin
 
+
     // Verificando se há algum campo em branco
-    if (
-      nomeUser == "" ||
-      email == "" ||
-      senha == "" ||
-      senhaCerta == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+    // if (
+    //   nomeUser == "" ||
+    //   email == "" ||
+    //   senha == "" ||
+    //   senhaCerta == ""
+    // ) 
 
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
 
-    
-    
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -126,54 +132,54 @@
         senhaServer: senha,
       }),
     })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
-          cardErro.style.display = "block";
+    .then(async function (resposta) {
+    console.log("Status da resposta:", resposta.status);
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+    const texto = await resposta.text();
+    console.log("Corpo da resposta:", texto);
 
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
+    if (resposta.ok) {
+        console.log("REDIRECIONANDO...");
+        window.location.href = "login.html";
+    } else {
+        console.error("RESPOSTA NÃO OK");
+    }
+})
+.catch(function (erro) {
+    console.error("ERRO NO FETCH:", erro);
+});
 
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
 
-    return false;
+
+
+
+      // .then(async function (resposta) {
+      //   console.log("Status:", resposta.status);
+
+      //   const texto = await resposta.text();
+      //   console.log("Resposta do servidor:", texto);
+
+      //   if (resposta.ok) {
+
+      //     alert('Cadastro Realizado com sucesso! redirecionando para a pagina de login...');
+
+      //     setTimeout(() => {
+      //       window.location = "./login.html";
+      //     }, "2000");
+
+
+      //   } else {
+      //     throw "Houve um erro ao tentar realizar o cadastro!";
+      //   }
+      // })
+      // .catch(function (resposta) {
+      //   console.log("#ERRO:${resposta}", erro);
+
+      // });
+
   }
 
-  // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaCadastroSite.push(empresa);
 
-            console.log("listaCadastroSite")
-            console.log(listaCadastroSite[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
 
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
 </script>
