@@ -1,57 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Login</title>
     <link rel="stylesheet" href="css/login.css">
 </head>
+
 <body>
 
     <!-- NAVBAR -->
-     <div class="Navbar">
+    <div class="Navbar">
         <div class="logoSite"></div>
 
-            <div class="botoes1">
-                <label class="inicio" style="color: #F5FF0C;" style="text-decoration: none;">Início</label>
-                <label class="quiz" style="color: orange;" style="text-decoration: none;">Quiz</label>
-            </div>
-
-            <div class="loginCadastro">
-                <label style="color: orange;">
-                    <a href="login.html" style="text-decoration: none;">Login</a>
-                </label>
-
-                <label style="color: orange;">
-                    <a href="cadastro.html" style="text-decoration: none;">Cadastro</a>
-                </label>
-            </div>
-
+        <div class="botoes1">
+            <label class="inicio" style="color: #F5FF0C;" style="text-decoration: none;">Início</label>
+            <label class="quiz" style="color: orange;" style="text-decoration: none;">Quiz</label>
         </div>
+
+        <div class="loginCadastro">
+            <label style="color: orange;">
+                <a href="login.html" style="text-decoration: none;">Login</a>
+            </label>
+
+            <label style="color: orange;">
+                <a href="cadastro.html" style="text-decoration: none;">Cadastro</a>
+            </label>
+        </div>
+
+    </div>
 
     <main class="container">
 
         <div class="logo-central">logo</div>
 
         <div class="caixa-login">
-            <form>
-                <label>E-mail</label>
-                <input type="text" id="ipt_email">
+            <label>E-mail</label>
+            <input type="text" id="ipt_email">
 
-                <label>Senha</label>
-                <input type="password" id="ipt_senha">
+            <label>Senha</label>
+            <input type="password" id="ipt_senha">
 
+            <a href="./quiz/quizIndex.html"></a>
 
-                <button type="button" class="btn-start" onclick="entrar()">START</button>
+            <button class="btn-start" onclick="entrar()">START</button>
 
-                <p class="registro">
-                    Não possui conta? <a href="cadastro.html">Cadastre-se</a>
-                </p>
-            </form>
+            <p class="registro">
+                Não possui conta? <a href="cadastro.html">Cadastre-se</a>
+            </p>
         </div>
     </main>
 
 </body>
+
 </html>
 
 
@@ -59,7 +61,7 @@
 
 
     function entrar() {
-        aguardar();
+       
 
         var emailVar = ipt_email.value;
         var senhaVar = ipt_senha.value;
@@ -67,12 +69,9 @@
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -89,19 +88,19 @@
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
 
+            console.log(resposta);
             if (resposta.ok) {
-                console.log(resposta);
+                
 
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    sessionStorage.EMAIL_USUARIO = json[0].email;
+                    sessionStorage.NOME_USUARIO = json[0].nome;
+                    sessionStorage.ID_USUARIO = json[0].idUsuario;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./quiz/quizIndex.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -112,7 +111,6 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
                 });
             }
 
@@ -123,8 +121,6 @@
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    
 
 </script>

@@ -52,9 +52,7 @@ body {
 .logoSite {
     width: 60px;
     height: 60px;
-    background-color: white;
     border-radius: 50%;
-    background-image: url('logo.png'); /* opcional */
     background-size: cover;
 }
 
@@ -125,7 +123,7 @@ body {
     border: 2px solid rgb(255, 255, 255);
     background-color: #000000;
     border-radius: 5px;
-    padding: 5px;
+    padding: 15px;
 }
 
 .caixaDeBotão label {
@@ -184,7 +182,7 @@ body {
 
 
 
-
+/* 
 
 /*início do CSS da história do jogo*/
 .rota {
@@ -206,6 +204,15 @@ body {
     object-fit: cover; 
 }
 
+.imagemRotaNeutra{
+
+
+    width: 300px;   /* ajuste o valor como preferir */
+    height: auto;   /* mantém a proporção correta */
+    border-radius: 10px; /* opcional */
+
+
+}
 
 .rota.rota .texto {
     background-color: gold;
@@ -217,6 +224,7 @@ body {
 /*fim do CSS da história do jogo*/
 
 
+ */
 
 
 
@@ -225,7 +233,46 @@ body {
 
 
 
+/*início do CSS das rotas*/
 
+.cinzaFundoRota {
+    width: 90%;
+    background-color: #222;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+
+.cinzaClaroRota {
+    background-color: #aaa;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+
+.imagemRotaContainer img {
+    display: block;
+    margin: 10px auto;
+    max-width: 90%;
+    border-radius: 5px;
+}
+
+
+.textoRota {
+    width: 80%;                
+    margin: 20px auto;         
+    background-color: #000;    
+    color: #fff;               
+    padding: 20px;             
+    border: 2px solid white;   
+    border-radius: 10px;      
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify;  
+}
+
+/*fim do CSS das rotas*/
 
 
 

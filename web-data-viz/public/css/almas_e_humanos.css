@@ -214,14 +214,16 @@ body {
 
 
 .alma .texto {
-    background-color: rgb(0, 0, 0);
-    margin: 5px auto;
-    width: 90%;
-    height: 60px;
-    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    margin: 15px auto;
+    width: 85%;
+    padding: 20px;
+    border-radius: 10px;
     border: 2px solid white;
+    text-align: justify;
+    line-height: 1.5;
 }
-
 
 /*início do CSS das fases do jogo*/
 

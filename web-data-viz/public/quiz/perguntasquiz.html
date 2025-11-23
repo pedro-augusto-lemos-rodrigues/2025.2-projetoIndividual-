@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Undertale</title>
+    <link rel="stylesheet" href="perguntasquiz.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body onload="iniciarQuiz()">
+    <!--inicia o quiz assim que carrega a página -->
+
+
+
+
+
+
+
+
+    <!-- navbar do site -->
+    <div class="navbar">
+        <div class="logoSite">logo</div>
+
+        <div class="botoesNav">
+            <button class="botaoNAVBAR">Início</button>
+            <button class="botaoNAVBAR">Quiz</button>
+        </div>
+
+        <div class="loginCadastro">
+            <button class="login">Login</button>
+            <button class="cadastrar">Cadastrar</button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!--  imagens dos Mettaton em formato gif e da Alphys, que nem no jogo original, ou quase igual... -->
+    <img src="../imagens/Mettaton.gif" class="mettaton">
+    <img src="../imagens/alphis_pb.png" class="alphys">
+
+
+
+
+
+
+
+
+
+    <!-- container de onde vai ficar o quiz -->
+    <div class="containerQuiz">
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- parte do quiz onde vai ficar as perguntas -->
+        <div class="caixaPergunta">
+            <span id="spanQuestaoExibida">Carregando pergunta...</span>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- parte das alternativas de A, B, C e D -->
+        <div id="opcoes" class="areaRespostas">
+
+            <div class="linha">
+                <input type="radio" name="option" id="primeiraOpcao" value="alternativaA">
+                <span class="textoResp" id="labelOpcaoUm">---</span>
+
+                <input type="radio" name="option" id="terceiraOpcao" value="alternativaC">
+                <span class="textoResp" id="labelOpcaoTres">---</span>
+
+
+                <input type="radio" name="option" id="segundaOpcao" value="alternativaB">
+                <span class="textoResp" id="labelOpcaoDois">---</span>
+
+                <input type="radio" name="option" id="quartaOpcao" value="alternativaD">
+                <span class="textoResp" id="labelOpcaoQuatro">---</span>
+            </div>
+
+
+
+
+
+
+
+            <!-- imagem da alma que representa o jogador, tanto no jogo original quanto aqui-->
+            <div class="coraCentral">
+                <img src="../imagens/determinacao.png">
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="botoesNavegacao">
+            <!-- os botões usados para selecionar a resposta e mudar de página. Bem como no protótipo de Quiz libredo no material do Web-Data-Viz-->
+            <button class="botaoSelecionar" onclick="select()">SELECT</button>
+            <button class="botaoNEXT" onclick="next()">NEXT »</button>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- O resultado final aparece em um gráfico de Dashbord, mostrando a quantidade de erros e acertos do jogador/usuario -->
+    <div id="resultadoFinal" style="display:none; text-align:center; color:white; margin-top:40px;">
+        <h1>Resultado do Quiz</h1>
+        <h2 id="textoResultado"></h2>
+
+        <div style="width:400px; margin:auto;">
+            <canvas id="graficoQuiz"></canvas>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+
+
+
+
+    // a lista de todas as perguntas e respostas
+    var listaDeQuestoes = [
+
+
+        { //pergunta 1
+
+            pergunta: "O que signifiva a alma de cor verde?",
+            alternativaA: "Determinação",
+            alternativaB: "Bondade",
+            alternativaC: "Bravura",
+            alternativaD: "Integridade",
+            alternativaCorreta: "alternativaB"
+        },
+
+
+
+        { //pergunta 2
+
+            pergunta: "Quanto chefes tem no jogo, contando os chefes secretos, mini Boss, etc?",
+            alternativaA: "15 a 20",
+            alternativaB: "20 a 40",
+            alternativaC: "10",
+            alternativaD: "3 a 12",
+            alternativaCorreta: "alternativaA"
+        },
+
+
+
+        { //pergunta 3
+
+            pergunta: "Quantas letras há no nome Mettatonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn <br> nnnnnnnnnnnnnnnnnnnnnnnnnnnnnn <br> nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn?",
+            alternativaA: "108",
+            alternativaB: "40",
+            alternativaC: "100",
+            alternativaD: "78",
+            alternativaCorreta: "alternativaA"
+        },
+
+
+
+        { //pergunta 4
+
+            pergunta: "Você beijaria um fantasma?",
+            alternativaA: "É claro",
+            alternativaB: "É claro",
+            alternativaC: "É claro",
+            alternativaD: "É claro",
+            alternativaCorreta: "alternativaD"
+        },
+
+
+
+        { //pergunta 5
+            //vem direto de uma das questõs dalista do reforço de matemática 
+
+            pergunta: "Um caminhão percorre 200 km em 5h. Qual a velocidade média?",
+            alternativaA: "40 km/h",
+            alternativaB: "50 km/h",
+            alternativaC: "55 km/h",
+            alternativaD: "60 km/h",
+            alternativaCorreta: "alternativaA"
+        },
+
+
+
+        { //pergunta 6
+
+            pergunta: "Qual é o nome REAL do Sans?",
+            alternativaA: "Samuel",
+            alternativaB: "Sanford",
+            alternativaC: "Sansão",
+            alternativaD: "Ele não tem nome real",
+            alternativaCorreta: "alternativaD"
+        },
+
+
+
+        { //pergunta 7
+
+            pergunta: "Qual personagem é cientista oficialmente na história?",
+            alternativaA: "Papyrus",
+            alternativaB: "Alphys",
+            alternativaC: "Toriel",
+            alternativaD: "Undyne",
+            alternativaCorreta: "alternativaB"
+        },
+
+
+
+        { //pergunta 8
+
+            pergunta: "Qual é a condição exata necessária para ativar o verdadeiro final Pacifista?",
+            alternativaA: "Não matar ninguém e ter mais de 20 de bondade no SAVE",
+            alternativaB: "Não matar ninguém e completar TODAS as sidequests importantes",
+            alternativaC: "Ter LV = 0 e nunca usar itens de cura",
+            alternativaD: "Matar apenas chefes obrigatórios",
+            alternativaCorreta: "alternativaB"
+        },
+
+
+
+        { //pergunta 9
+            //vem direto de uma das questõs dalista do reforço de matemática 
+
+            pergunta: "Um vendedor recebe a título de rendimento mensal um valor fixo de R$160,00 mais um adicional de 2% das vendas por ele efetuadas no mês. <br> Com base nisso, responda: Qual o rendimento desse vendedor em um mês no qual o total de vendas feitas por ele foi de R$ 9 500,00?",
+            alternativaA: "R$ 380,00",
+            alternativaB: "R$ 160,00",
+            alternativaC: "R$ 350,00.",
+            alternativaD: "R$ 190,00",
+            alternativaCorreta: "alternativaC"
+        },
+
+
+
+        { //pergunta 10
+
+            pergunta: "Está um belo dia lá fora... <br> <br> Pássaros cantando... Flores desabrochando... <br> <br> E crianças como você... DEVERIAM QUIMAR NO INFERNO...",
+            alternativaA: "Flowey",
+            alternativaB: "Sans",
+            alternativaC: "Papyrus",
+            alternativaD: "Asgore",
+            alternativaCorreta: "alternativaB"
+        }
+    ]
+
+
+
+
+
+
+
+
+    // variaveis globias do código
+    var numeroDaQuestaoAtual = 0    //diz o número da questão atual
+    var quantidadeDeQuestoes = listaDeQuestoes.length   //diz a quantidade de questões na lista de perguntas
+    var pontuacao = 0  //diz a pontuação do jogador/usuario
+
+
+
+
+
+
+
+    // função repsonsável por iniciar o quiz assim que a página é carregada
+    function iniciarQuiz() {
+        preencherQuestao(0)
+        document.querySelector(".botaoNEXT").disabled = true
+    }
+
+
+
+
+
+
+
+    // função rewsponsável por exibir todas as perguntas do quiz
+    function preencherQuestao(index) {
+        var q = listaDeQuestoes[index]
+
+        spanQuestaoExibida.innerHTML = q.pergunta
+        labelOpcaoUm.innerHTML = q.alternativaA
+        labelOpcaoDois.innerHTML = q.alternativaB
+        labelOpcaoTres.innerHTML = q.alternativaC
+        labelOpcaoQuatro.innerHTML = q.alternativaD
+
+        limparSelecao()
+        document.querySelector(".botaoNEXT").disabled = true
+    }
+
+
+
+
+
+
+    // a funçõa atribuida ao botão do SELECT, que seleciona a pergunta escolhida
+    function select() {
+        var opcoes = document.getElementsByName("option")
+        var marcado = null
+
+        for (var o of opcoes) {
+            if (o.checked) marcado = o.value
+        }
+
+        if (!marcado) {
+            alert("Selecione uma resposta!")
+
+        }
+
+
+
+        // nessa parte da função do SELECT, é onde ocorre a validação se a pergunta foi a correta ou não
+        var respostaCorreta = listaDeQuestoes[numeroDaQuestaoAtual].alternativaCorreta
+        if (marcado == respostaCorreta) {
+            pontuacao++
+        }
+
+        document.querySelector(".botaoNEXT").disabled = false
+    }
+
+
+
+
+
+
+
+    // parte responsável por passar a questão para a próxima
+    function next() {
+        numeroDaQuestaoAtual++
+
+        if (numeroDaQuestaoAtual >= quantidadeDeQuestoes) {
+            finalizarQuiz() // aqui se encerra o quiz caso não haja mais nenhuma questão quando se seleciona o NEXT
+            return
+        }
+
+        preencherQuestao(numeroDaQuestaoAtual)
+    }
+
+
+
+
+
+
+
+    // aqui é onde se finaliza o quiz e já mostra o gráfico
+    function finalizarQuiz() {
+
+
+        // aqui é onde mada a página, emvez de mostrar o quiz,mostra o gráfico de acerto e erro
+        document.querySelector(".containerQuiz").style.display = "none"
+        document.getElementById("resultadoFinal").style.display = "block"
+
+        var erros = quantidadeDeQuestoes - pontuacao
+
+        var porcentagemAcertos = (pontuacao / quantidadeDeQuestoes) * 100;
+        var porcentagemErros = (erros / quantidadeDeQuestoes) * 100;
+
+
+
+        // aqui mostra a quantidade de acertos e erros do usuario
+        document.getElementById("textoResultado").innerHTML =
+            `
+            Você acertou ${pontuacao} perguntas <br>
+            Você errou ${erros} perguntas <br>
+            Você acertou ${porcentagemAcertos}% das questões <br>
+            Você errou ${porcentagemErros}% das questões 
+            `
+
+        // é aqui onde nós vemos o gráfico
+        var ctx = document.getElementById("graficoQuiz")
+
+        new Chart(ctx, {
+            type: "doughnut",
+            data: {
+                labels: ["Acertos", "Erros"],
+                datasets: [{
+                    data: [pontuacao, erros],
+                    backgroundColor: [
+                        "#ADD8E6" // acertos, Azul-Claro
+                        , "#FFFF00" //erros, Amarelo
+                    ] // cor escolhida em refeência ao olho de poder do Sans
+                }]
+            }
+        })
+
+        fetch("/dashbord/dashbord", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkUsuarioServer: sessionStorage.ID_USUARIO, // deve existir no login
+                fkQuizServer: 1, // id do quiz Undertale
+                pontuacaoServer: pontuacao
+            })
+        })
+            .then(res => {
+                if (res.ok) {
+                    console.log("Pontuação salva!");
+                } else {
+                    console.error("Erro ao salvar no banco.");
+                }
+            })
+            .catch(err => console.error("Erro no fetch:", err));
+
+
+    }
+
+
+
+
+
+
+
+
+    // Remove marcação
+    function limparSelecao() {
+        var opcoes = document.getElementsByName("option");
+        for (var o of opcoes) o.checked = false;
+    }
+
+
+
+
+
+
+
+</script>
