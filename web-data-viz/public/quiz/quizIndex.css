@@ -52,12 +52,9 @@ body {
 .logoSite {
     width: 60px;
     height: 60px;
-    background-color: white;
     border-radius: 50%;
-    background-image: url('logo.png'); /* opcional */
     background-size: cover;
 }
-
 .botoes1 .inicio {
     background-color: #000000;
     color: black;
